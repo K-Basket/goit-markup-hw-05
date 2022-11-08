@@ -51,6 +51,17 @@ p {
   letter-spacing: 0.03em;
 }
 
+.title-secondary {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: left;
+
+  color: var(--text-secondary-color);
+}
+
 .visually-hidden {
   position: absolute;
   white-space: nowrap;
@@ -114,17 +125,24 @@ p {
 }
 
 .site-nav {
+  display: flex;
   padding-top: 32px;
   padding-bottom: 32px;
-  display: flex;
 }
 
 .item-nav:not(:last-child) {
   margin-right: 50px;
 }
 
+.item-nav {
+  position: relative;
+}
+
 .link-nav {
   color: var(--text-secondary-color);
+
+  transition:
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .link-nav:hover,
@@ -134,6 +152,19 @@ p {
 
 .link-nav.current {
   color: var(--accent-color);
+}
+
+.link-nav.current::after {
+  position: absolute;
+  display: block;
+
+  margin-top: 28px;
+  width: 100%;
+  height: 4px;
+
+  content: '';
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .site-nav,
@@ -157,6 +188,10 @@ p {
   display: flex;
   align-items: center;
   color: var(--text-main-color);
+
+  transition:
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .link-contact>svg {
@@ -216,6 +251,9 @@ p {
 
   border: none;
   border-radius: 4px;
+
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .button-hero:hover,
@@ -256,15 +294,6 @@ p {
 
 .title-features {
   margin-bottom: 10px;
-
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.1;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  text-align: left;
-
-  color: var(--text-secondary-color);
 }
 
 .text-features {
@@ -297,6 +326,25 @@ p {
   margin-bottom: 30px;
 }
 
+.box-services {
+  position: relative;
+  display: inline-block;
+}
+
+.title-services {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  padding-top: 27px;
+  padding-bottom: 27px;
+  width: 100%;
+
+  text-align: center;
+  color: var(--white-color);
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
 
 /* staff */
 
@@ -305,11 +353,11 @@ p {
 }
 
 .list-staff {
-  margin-right: calc(-1 * var(--margin-item));
-  margin-bottom: calc(-1 * var(--margin-item));
-
   display: flex;
   flex-wrap: wrap;
+
+  margin-right: calc(-1 * var(--margin-item));
+  margin-bottom: calc(-1 * var(--margin-item));
 }
 
 .item-staff {
@@ -348,6 +396,7 @@ p {
 
 .text-staff {
   margin-bottom: 16px;
+
   font-size: 16px;
   line-height: 1.2;
   text-align: center;
@@ -365,15 +414,20 @@ p {
 }
 
 .link-socials {
-  width: 44px;
-  height: 44px;
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 44px;
+  height: 44px;
+
   border-radius: 50%;
   background-color: var(--white-color);
   fill: var(--icon-color);
+
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .link-socials:hover,
@@ -415,10 +469,14 @@ p {
   border-style: solid;
   border-radius: 4px;
   color: var(--icon-color);
+  transition:
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .icon-customers {
   fill: currentColor;
+  transition:
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .link-customers:hover,
@@ -457,6 +515,11 @@ p {
 
   border: none;
   border-radius: 4px;
+
+  transition:
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .button-filter:hover,
@@ -483,6 +546,12 @@ p {
   flex-basis: calc((100%) / 3 - var(--margin-item));
 }
 
+.link-activities {
+  color: var(--text-secondary-color);
+  transition:
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
 .link-activities:hover,
 .link-activities:focus {
   /* тень работает только на блочных элементах
@@ -493,8 +562,49 @@ p {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.link-activities {
-  color: var(--text-secondary-color);
+.overlay-activities {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-activities::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
+  content: '';
+
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+
+  font-size: 18px;
+  line-height: 1.5555;
+  letter-spacing: 0.03em;
+  color: var(--white-color);
+}
+
+.overlay-activities::before,
+.text-overlay {
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+
+}
+
+.link-activities:hover .overlay-activities::before,
+.link-activities:hover .text-overlay,
+.link-activities:focus .overlay-activities::before,
+.link-activities:focus .text-overlay {
+  transform: translate(0);
 }
 
 .link-activities .description {
@@ -589,4 +699,86 @@ p {
 .link-socials.footer-socials {
   background-color: rgba(255, 255, 255, 0.1);
   fill: var(--white-color);
+
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+
+/* modal window */
+
+/* затемнение страницы */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+/* свойства is-hidden отключаются и включаются
+скриптом modal.js */
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.modal {
+  /* позиционирование modal window по центрру */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: var(--white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.close-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 6px;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+}
+
+.icon-close {
+  fill: var(--black-color);
+  transition:
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.close-link:hover .icon-close,
+.close-link:focus .icon-close {
+  fill: var(--accent-color);
 }
