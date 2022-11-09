@@ -164,7 +164,7 @@ p {
   position: absolute;
   display: block;
 
-  margin-top: 28px;
+  margin-top: 29px;
   width: 100%;
   height: 4px;
 
@@ -195,6 +195,7 @@ p {
   align-items: center;
 
   color: var(--text-main-color);
+  fill: var(--text-main-color);
 
   transition:
     color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
@@ -210,10 +211,6 @@ p {
   color: var(--accent-color);
   fill: var(--accent-color);
 }
-
-
-
-
 
 
 /* ========== STUDIO PAGE ========== */
@@ -493,15 +490,19 @@ p {
   padding: 16px 30px;
 
   color: var(--icon-color);
+  fill: var(--icon-color);
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
 
   transition:
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .icon-customers {
+  width: 41px;
+  height: 46.7px;
   fill: currentColor;
 
   transition:
@@ -515,9 +516,8 @@ p {
 }
 
 
-
-
 /* ========== PORTFOLIO PAGE ========== */
+
 
 /* filter button */
 
@@ -569,7 +569,6 @@ p {
 
   margin-right: calc(-1 * var(--margin-item));
   margin-bottom: calc(-1 * var(--margin-item));
-
 }
 
 .item-activities {
@@ -612,7 +611,6 @@ p {
   height: 100%;
 
   content: '';
-
   background-color: rgba(33, 150, 243, 0.9);
 }
 
@@ -621,26 +619,30 @@ p {
   top: 0;
   left: 0;
 
-  padding: 63px 24px;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 0px 24px;
 
   font-size: 18px;
   line-height: 1.5555;
   letter-spacing: 0.03em;
 
   color: var(--white-color);
+  background-color: rgba(33, 150, 243, 0.9);
 }
 
 .overlay-activities::before,
 .text-overlay {
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-
 }
 
-.link-activities:hover .overlay-activities::before,
+.link-activities:hover,
 .link-activities:hover .text-overlay,
-.link-activities:focus .overlay-activities::before,
+.link-activities:focus,
 .link-activities:focus .text-overlay {
   transform: translate(0);
 }
@@ -686,7 +688,6 @@ p {
   align-items: baseline;
 }
 
-
 .footer .logo {
   display: inline-block;
   margin-bottom: 20px;
@@ -715,7 +716,6 @@ p {
   color: var(--white-color);
 }
 
-
 .footer .item-contact:not(:last-child) {
   margin-bottom: 9px;
 }
@@ -741,8 +741,7 @@ p {
   fill: var(--white-color);
 
   transition:
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 
@@ -756,7 +755,7 @@ p {
 
   width: 100%;
   height: 100%;
-  
+
   background-color: rgba(0, 0, 0, 0.2);
 
   opacity: 1;
